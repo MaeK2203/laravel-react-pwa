@@ -12,20 +12,20 @@ services:
       - redis
       - s3
 
-#  nginx:
-#    build:
-#      context: ${NGINX_BUILD_PATH}
-#      target: development
-#    ports:
-#      - ${NGINX_HOST_PORT_HTTP}:${NGINX_CONTAINER_PORT_HTTP}
-#      - ${NGINX_HOST_PORT_HTTPS}:${NGINX_CONTAINER_PORT_HTTPS}
-#    volumes:
-#      - ./infra/nginx/ssl/cert-key.pem:/etc/nginx/certs/cert-key.pem
-#      - ./infra/nginx/ssl/cert.pem:/etc/nginx/certs/cert.pem
-#      - ./server/public:/var/www/html/public
-#      - ./server/storage/app/public:/var/www/html/public/storage
-#    depends_on:
-#      - app
+  nginx:
+    build:
+      context: ${NGINX_BUILD_PATH}
+      target: development
+    ports:
+      - ${NGINX_HOST_PORT_HTTP}:${NGINX_CONTAINER_PORT_HTTP}
+      - ${NGINX_HOST_PORT_HTTPS}:${NGINX_CONTAINER_PORT_HTTPS}
+    volumes:
+      - ./infra/nginx/ssl/cert-key.pem:/etc/nginx/certs/cert-key.pem
+      - ./infra/nginx/ssl/cert.pem:/etc/nginx/certs/cert.pem
+      - ./server/public:/var/www/html/public
+      - ./server/storage/app/public:/var/www/html/public/storage
+    depends_on:
+      - app
 
   mysql:
     # platform: linux/x86_64
