@@ -13,7 +13,7 @@ build:
 	mkcert -key-file infra/nginx/ssl/cert-key.pem -cert-file infra/nginx/ssl/cert.pem localhost 127.0.0.1 ::1
 	docker compose up -d --build
 	docker compose exec app composer install
-	docker compose exec app cp .env.example .env
+	docker compose exec app cp .env.develop .env
 	docker compose exec app php artisan key:generate
 rebuild:
 	docker compose down --rmi local
