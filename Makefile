@@ -6,6 +6,7 @@ init:
 	@make wait-for-mysql
 	sleep 30
 	docker compose exec app php artisan migrate:fresh --seed
+	cd server && npm ci
 	docker compose ps
 build:
 	mkcert --install
@@ -49,3 +50,5 @@ fmt:
 	docker compose exec -T app /var/www/html/vendor/bin/pint --test --config pint.json $(FILE_PATHS)
 fix:
 	docker compose exec app /var/www/html/vendor/bin/pint -v --config pint.json
+serve:
+	cd server && npm run dev
