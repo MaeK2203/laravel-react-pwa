@@ -1,14 +1,14 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App';
+import { registerSW } from 'virtual:pwa-register';
+import { App } from './App';
 
-const container = document.getElementById('app');
-const root = createRoot(container!);
+const root = createRoot(document.getElementById('root') as Element)
 
 root.render(
-    // <React.StrictMode>
-    <div className="text-red">
+    <StrictMode>
         <App />
-    </div>
-// </React.StrictMode>,
+    </StrictMode>
 );
+
+registerSW();
