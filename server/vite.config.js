@@ -25,6 +25,7 @@ export default defineConfig({
         react(),
         VitePWA({
             manifest: {
+                id: '/todo/',
                 // ユーザーに通常表示されるアプリ名
                 name: 'Todo App (PWA)',
                 // name を表示するのに十分なスペースがない場合に表示されるアプリ名
